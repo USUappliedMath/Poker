@@ -33,61 +33,59 @@ bool checkFour(vector<int> &hand)
 {}
 
 // Check hand for a single pair -- class
-bool checkPair(vector<int> &hand)
+int checkPair(vector<int> &hand)
 {
+// This function assumes the hand is in sorted order
+// then it just needs to check the next card in the hand
+// and compare against the current card 
+// if a pair is found, then the face value of the pair is returned
 
-	for( int ii=0; ii<hand.size(); ii++)
-	{
-		for(int jj=ii+1; jj<hand.size(); jj++)
-		{
-			if(hand[ii]/4 == hand[jj]/4)
-			return true;
-		}
-	}
-	return false;
+	for( int ii=0; ii<hand.size()-1; ii++)
+		if(hand[ii]/4 == hand[ii+1]/4)
+			return hand[ii];
+	return 0;
 }
+
+// faceVal: a function to return the correct character for the face value of a card, taking ace, jack, queen and king into account
+char faceVal(int card)
+{
+	switch (card/4)
+	{
+		case 1:
+			return 'A';
+		case 11:
+			return 'J';
+		case 12:
+			return 'Q';
+		case 13:
+            return 'K';
+        default:
+            return (card/4)+48;	// using unicode character values for digit chars
+   	}
+}
+
+// suitVal: returns the correct character for the suit of a card
+char suitVal(int card)
+{
+    switch (card%4)
+    {
+        case 0:
+            return 'H';
+        case 1:
+            return 'D';
+        case 2:
+            return 'C';
+        case 3:
+            return 'S';
+	}
+}
+
 
 // a function to print the contents of your hand of cards
 void print_hand(vector<int> &hand)
 {
-	for(int ii=0; ii<5; ii++)
-	{
-		switch (hand[ii]/4)
-		{
-			case 1:
-				cout << "A-";
-				break;
-			case 11:
-				cout << "J-";
-				break;
-			case 12:
-				cout << "Q-";
-				break;
-			case 13:
-                cout << "K-";
-                break;
-            default:
-                cout << hand[ii]/4 << "-";
-            }
-
-        switch (hand[ii]%4)
-        {
-            case 0:
-                cout << "H ";
-                break;
-            case 1:
-                cout << "D ";
-                break;
-            case 2:
-                cout << "C ";
-                break;
-            case 3:
-                cout << "S ";
-                break;
-            default:
-                cout << "! ";
-        }
-    }
+	for( int ii=0; ii<hand.size(); ii++ )
+		cout << faceVal(hand[ii]) << "-" << suitVal(hand[ii]) << " ";
 }
 
 int main()
@@ -126,12 +124,6 @@ int main()
     print_hand(hand);
     cout << "\n\n";
 
-    // use the STL sort algorithm
-    cout << "Sorting the hand: ";
-    sort(hand.begin(), hand.end());
-    print_hand(hand);
-    cout << "\n\n";
-
     // draw a new card
     string discard;
     int disVal = 0;
@@ -156,8 +148,15 @@ int main()
     print_hand(hand);
     cout << "\n\n";
 
-    if(checkPair(hand))
-        cout << "You have a pair!\n";
+    // use the STL sort algorithm
+    cout << "Sorting the hand: ";
+    sort(hand.begin(), hand.end());
+    print_hand(hand);
+    cout << "\n\n";
+
+	int pair;
+    if( (pair = checkPair(hand)) )
+        cout << "You have a pair of " << faceVal(pair) << "'s!\n";
     else
         cout << "No pair for you\n";
 
