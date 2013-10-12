@@ -26,7 +26,10 @@ bool checkFlush(vector<int> &hand)
 
 // Check hand for a straight flush -- Eric
 bool checkStFlush(vector<int> &hand)
-{}
+{
+// just need to make sure it's a straight AND a flush!
+	return ( checkStraight(hand) && checkFlush(hand) );
+}
 
 // Check hand for Four of a kind -- Audrey
 bool checkFour(vector<int> &hand)
