@@ -5,6 +5,7 @@
 #include <algorithm> // needed for the algorithms
 #include <cstdlib> // for srand
 #include <ctime>
+#include <string>
 
 using namespace std;
 
@@ -50,20 +51,24 @@ int checkPair(vector<int> &hand)
 }
 
 // faceVal: a function to return the correct character for the face value of a card, taking ace, jack, queen and king into account
-char faceVal(int card)
+string faceVal(int card)
 {
 	switch (card/4)
 	{
 		case 1:
-			return 'A';
+			return "A";
+		case 10:
+			return "10";
 		case 11:
-			return 'J';
+			return "J";
 		case 12:
-			return 'Q';
+			return "Q";
 		case 13:
-            return 'K';
+            return "K";
         default:
-            return (card/4)+48;	// using unicode character values for digit chars
+			string st;
+			st += (card/4)+48;	// using unicode char values
+			return st;
    	}
 }
 
