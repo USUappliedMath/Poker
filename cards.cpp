@@ -19,7 +19,29 @@ bool checkFullHouse(vector<int> &hand)
 
 // Check hand for a straight -- Sergio
 bool checkStraight(vector<int> &hand)
-{}
+{
+	//put the cards in order. makes it easier to check for a sequence
+	sort(hand.begin(), hand.end());
+	//counter
+	int count = 0;
+	//check for an ace at the beginning and a king at the end
+	//in case we have 10,J,Q,K,A
+	if(hand[0]/4 == 1 && hand[4]/4 == 13)
+		count += 1;
+	//for loop that goes through the hand	
+	for(int i = 0; i<hand.size()-1; i++)
+		{
+			//check if proceeding card is greater than the previous card by one
+			// if so, increment the count
+			if(hand[i]/4 == hand[i+1]/4-1)
+				count +=1 ;
+		}
+	//if count went up four times, we have a straight.	
+	if(count == 4)	
+		return true;
+	else
+		return false;
+}
 
 // Check hand for a flush -- Jon
 bool checkFlush(vector<int> &hand)
@@ -167,7 +189,9 @@ int main()
         cout << "You have a pair of " << faceVal(pair) << "'s!\n";
     else
         cout << "No pair for you\n";
-
+    //check for a straight
+    if(checkStraight(hand));
+    cout<<"You have a straight!"	
     // cin.gets() for running on Microsoft VS
 		cout << "\n\nPress enter to quit\n\n";
     cin.get();
