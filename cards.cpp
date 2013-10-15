@@ -45,7 +45,19 @@ bool checkStraight(vector<int> &hand)
 
 // Check hand for a flush -- Jon
 bool checkFlush(vector<int> &hand)
-{}
+{
+	int ii = 0;
+
+	while(ii + 1 < hand.size())
+	{
+		if(hand[ii]%4 == hand[ii+1]%4)
+			ii++;
+		else 
+			return false;
+	}
+
+	return true;
+}
 
 // Check hand for a straight flush -- Eric
 bool checkStFlush(vector<int> &hand)
