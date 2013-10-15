@@ -2,7 +2,6 @@
 -- Sign in here and commit changes to test your git knowledge!
 
 Eric Addison (checked in again)
-
+Sergio Ramirez
 Matthew Lewis
-=======
 Chris Spatig
