@@ -3,4 +3,8 @@
 
 Eric Addison
 
+<<<<<<< HEAD
 Matthew Lewis
+=======
+Chris Spatig
+>>>>>>> e8631451788fb01fe1d03f6bd7725be6818d0e9a
