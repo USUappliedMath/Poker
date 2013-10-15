@@ -15,7 +15,15 @@ bool checkThree(vector<int> &hand)
 
 // Check hand for a Full House -- Jake
 bool checkFullHouse(vector<int> &hand)
-{}
+{
+if(hand[0]/4 == hand[1]/4)
+		if (hand[1]/4 == hand[2]/4 && hand[3]/4 == hand[4]/4)
+			return true;
+		if (hand[2]/4 == hand[3]/4 && hand[3]/4 == hand[4]/4)
+			return true;
+
+return false;
+}
 
 // Check hand for a straight -- Sergio
 bool checkStraight(vector<int> &hand)
@@ -206,6 +214,12 @@ int main()
     cout<<"You have a straight!"	
     // cin.gets() for running on Microsoft VS
 		cout << "\n\nPress enter to quit\n\n";
+
+	if(checkFullHouse(hand))
+	cout << "You have a Full House!\n";
+	else
+	cout << "No Full House for you turkey. \n";
+
     cin.get();
     cin.get();
     return 0;
