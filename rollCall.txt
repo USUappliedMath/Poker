@@ -3,4 +3,12 @@
 
 Eric Addison
 
+<<<<<<< HEAD
 Jonathan Tyler
+=======
+<<<<<<< HEAD
+Matthew Lewis
+=======
+Chris Spatig
+>>>>>>> e8631451788fb01fe1d03f6bd7725be6818d0e9a
+>>>>>>> 6db5bdc531b1b6553b5fe6ca8411aa1f24320d6b
